@@ -56,16 +56,19 @@ def main():
         exit()
 
     file_feature = 'features_'+superclass+'.pickle'
-    rootpath = '..'
 
-    # The number of all classes
+    # The constants
     if superclass[0] == 'H':
         classNum = 30
     else:
         classNum = 50
+    testName = {'A': 'a', 'F': 'a', 'V': 'b', 'E': 'b', 'H': 'b'}
+    date = '20180321'
 
     # Load seen/unseen split
-    fsplit = open(rootpath+'/'+superclass+'/label_list.txt', 'r', encoding='UTF-8')
+    label_list_path = '../zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_train_'+date\
+            + '/zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_train_annotations_'+'label_list_'+date+'.txt'
+    fsplit = open(label_list_path, 'r', encoding='UTF-8')
     lines_label = fsplit.readlines()
     fsplit.close()
     list_train = list()
@@ -83,7 +86,10 @@ def main():
     # Load attributes
     attrnum = {'A':123, 'F':58, 'V':81, 'E':75, 'H':22}
 
-    fattr = open(rootpath + '/' + superclass + '/attributes_per_class.txt', 'r', encoding='UTF-8')
+    attributes_per_class_path = '../zsl_' + testName[superclass[0]] +'_' + str(superclass).lower() + '_train_' + date \
+            + '/zsl_' + testName[superclass[0]] +'_' + str(superclass).lower() \
+            + '_train_annotations_' + 'attributes_per_class_' + date + '.txt'
+    fattr = open(attributes_per_class_path, 'r', encoding='UTF-8')
     lines_attr = fattr.readlines()
     fattr.close()
     attributes = dict()

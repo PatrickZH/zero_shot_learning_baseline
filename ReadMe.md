@@ -1,8 +1,9 @@
 ### Description
-This is the baseline method for zero-shot learning competition.
+This is the baseline method (MDP) for AI_Challenger Zero-shot Learning Competition.
 
 ### Citing
 If you use the data and code, please cite the following papers:
+
 "AI Challenger : A Large-scale Dataset for Going Deeper in Image Understanding".
 Find the dataset paper here.   
 [Find the dataset paper here.](https://arxiv.org/abs/1711.06475)
@@ -24,7 +25,7 @@ Find the methodology paper here.
 @inproceedings{zhao2017zero,
   title={Zero-shot learning posed as a missing data problem},
   author={Zhao, Bo and Wu, Botong and Wu, Tianfu and Wang, Yizhou},
-  booktitle={Proceedings of ICCV Workshop},
+  booktitle={Proceedings of the International Conference on Computer Vision Workshops},
   pages={2616--2622},
   year={2017}
 }
@@ -35,10 +36,10 @@ Find the methodology paper here.
 1. Download the data and code.
 1. Put the data and code in the following directory:
 ```
--root
---code
---Animals
---Fruits
+-ai_challenger_zsl_20180321
+--zsl_a_animals_train_20180321
+--zsl_a_animals_test_20180321
+--baseline
 ```
 
 ### Running
@@ -57,5 +58,3 @@ Implement zero-shot learning:
 python MDP.py Animals
 ```
 
-### Reference
-Howard, A.G., Zhu, M., Chen, B., Kalenichenko, D., Wang, W., Weyand, T., Andreetto, M. and Adam, H., 2017. Mobilenets: Efficient convolutional neural networks for mobile vision applications. arXiv preprint arXiv:1704.04861.

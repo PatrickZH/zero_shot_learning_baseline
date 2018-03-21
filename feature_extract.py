@@ -45,8 +45,10 @@ def main():
         print('Parameters error')
         exit()
 
-    # The number of training classes
+    # The constants
     classNum = {'A': 40, 'F': 40, 'V': 40, 'E': 40, 'H': 24}
+    testName = {'A': 'a', 'F': 'a', 'V': 'b', 'E': 'b', 'H': 'b'}
+    date = '20180321'
 
     # Feature extraction model
     base_model = MobileNet(include_top=True, weights=None,
@@ -56,8 +58,10 @@ def main():
     model = Model(inputs=base_model.input,
                   outputs=base_model.get_layer('global_average_pooling2d_1').output)
 
-    imgdir = '../' + superclass
-    categories = os.listdir(imgdir+'/images')
+    imgdir_train = '../zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_train_'+date\
+                     +'/zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_train_images_'+date
+    imgdir_test = '../zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_test_'+date
+    categories = os.listdir(imgdir_train)
     categories.append('test')
 
     num = 0
@@ -65,9 +69,9 @@ def main():
         if eachclass[0] == '.':
             continue
         if eachclass == 'test':
-            classpath = imgdir + '/' + eachclass
+            classpath = imgdir_test
         else:
-            classpath = imgdir+'/images/'+eachclass
+            classpath = imgdir_train+'/'+eachclass
         num += len(os.listdir(classpath))
 
     print('Total image number = '+str(num))
@@ -83,9 +87,9 @@ def main():
         if eachclass[0] == '.':
             continue
         if eachclass == 'test':
-            classpath = imgdir + '/' + eachclass
+            classpath = imgdir_test
         else:
-            classpath = imgdir+'/images/'+eachclass
+            classpath = imgdir_train+'/'+eachclass
         imgs = os.listdir(classpath)
 
         for eachimg in imgs:

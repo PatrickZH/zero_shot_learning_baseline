@@ -50,8 +50,10 @@ def main():
         print('Parameters error')
         exit()
 
-    # The number of training classes
-    classNum = {'A':40, 'F':40, 'V':40, 'E':40, 'H':24}
+    # The constants
+    classNum = {'A': 40, 'F': 40, 'V': 40, 'E': 40, 'H': 24}
+    testName = {'A': 'a', 'F': 'a', 'V': 'b', 'E': 'b', 'H': 'b'}
+    date = '20180321'
 
     trainpath = 'trainval_'+superclass+'/train'
     valpath = 'trainval_'+superclass+'/val'
@@ -64,7 +66,8 @@ def main():
         os.mkdir('trainval_'+superclass)
         os.mkdir(trainpath)
         os.mkdir(valpath)
-        sourcepath = '../'+superclass+'/images'
+        sourcepath = '../zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_train_'+date\
+                     +'/zsl_'+testName[superclass[0]]+'_'+str(superclass).lower()+'_train_images_'+date
         categories = os.listdir(sourcepath)
         for eachclass in categories:
             if eachclass[0] == superclass[0]:
